@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Promo App</title>
+
+<style>
+    @font-face {
+        font-family: goldplay;
+        src: url(fonts/Goldplay-Light.woff2);
+    }
+    @font-face {
+        font-family: goldplaybold;
+        src: url(fonts/Goldplay-Bold.woff2);
+    }
+
+    body {
+        font-family: goldplay;
+        margin: 0;
+        background: #f7f7f7;
+        color: #333;
+        text-align: center;
+    }
+
+    /* ----- CONTROL DE VISIBILIDAD ----- */
+
+    /* Ocultar contenido en escritorio */
+    @media (min-width: 768px) {
+        .mobile-only {
+            display: none !important;
+        }
+        .desktop-message {
+            display: block !important;
+        }
+    }
+
+    /* Ocultar mensaje en móviles */
+    @media (max-width: 767px) {
+        .desktop-message {
+            display: none !important;
+        }
+    }
+
+    .desktop-message {
+        display: none;
+        text-align: center;
+        padding: 100px 20px;
+        font-size: 24px;
+        font-family: goldplaybold;
+        color: #333;
+    }
+
+    /* ----- ESTILOS ORIGINALES ----- */
+
+    header {
+        background: white;
+        padding: 15px 0;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    header img {
+        height: 50px;
+    }
+
+    .container {
+        padding: 40px 20px;
+        height: 70vh;
+        background-image: url("img/bg_image_mobile_375_4e30f9be37.webp");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    h1 {
+        font-size: 32px;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    p {
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+
+    .button {
+        background: #262626;
+        color: white;
+        padding: 15px 30px;
+        border-radius: 8px;
+        display: inline-block;
+        font-size: 18px;
+        text-decoration: none;
+        transition: 0.2s;
+        margin-top: 10px;
+    }
+
+    .button:hover {
+        background: #000;
+    }
+
+    .anim-container {
+        position: relative;
+        height: 200px;
+        margin-bottom: 20px;
+    }
+
+    .anim-img {
+        width: 200px;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: zoomAndSwap 6s ease-in-out infinite;
+    }
+
+    @keyframes zoomAndSwap {
+        0% {
+            transform: translateX(-50%) scale(1);
+            content: url("img/descarga.png");
+        }
+        33% {
+            transform: translateX(-50%) scale(1.3);
+            content: url("img/1.png");
+        }
+        66% {
+            transform: translateX(-50%) scale(1);
+            content: url("img/2.png");
+        }
+        100% {
+            transform: translateX(-50%) scale(1.3);
+            content: url("img/descarga.png");
+        }
+    }
+
+    footer {
+        background: #ffffff;
+        padding: 30px 20px;
+        margin-top: 50px;
+        border-top: 1px solid #ddd;
+        text-align: left;
+    }
+
+    .footer-section {
+        margin-bottom: 20px;
+    }
+
+    .footer-title {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 8px;
+        cursor: pointer;
+    }
+
+    .footer-option {
+        margin-left: 10px;
+        color: #555;
+    }
+
+    .social {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .social img {
+        width: 30px;
+        margin: 0 10px;
+        cursor: pointer;
+    }
+
+</style>
+</head>
+
+<body>
+
+<!-- MENSAJE SOLO PARA ESCRITORIO -->
+<div class="desktop-message">
+    ❌ Esta página no está disponible en versión escritorio.<br>
+    📱 Por favor, ábrela desde tu dispositivo móvil.
+</div>
+
+<!-- CONTENIDO SOLO PARA MÓVIL -->
+<div class="mobile-only">
+
+<!-- HEADER -->
+<header>
+    <img src="img/Rappi_logo.svg.png" alt="Logo">
+</header>
+
+<!-- CONTENIDO -->
+<div class="container">
+    <h1 style="font-family: goldplaybold;">Descarga la aplicación para Android y gana 100 S/</h1>
+    <p>Disfruta de un pedido de <strong>100 S/ totalmente gratis, para toda Lima sin cargo extra</strong>.</p>
+
+    <div class="anim-container">
+        <img class="anim-img" src="img/descarga.png" alt="">
+    </div>
+
+    <a href="#" class="button">¡Descargar ahora!</a>
+    <p style="font-size: 10px; margin-top: 120px;  font-family: goldplaybold;">Para obtener la promocion debes instalar la aplicación desde el enlance valido. Automatico se activara la promocion. No genera cargo adicionales ni necesitas afiliar tarjetas.</p>
+</div>
+
+<!-- FOOTER -->
+<footer>
+
+    <div class="footer-section">
+        <div class="footer-title">Pide tu comida favorita cerca de ti</div>
+        <div class="footer-option">Restaurantes</div>
+        <div class="footer-option">Mercados</div>
+        <div class="footer-option">Farmacias</div>
+    </div>
+
+    <div class="footer-section">
+        <div class="footer-title">Categorías</div>
+        <div class="footer-option">Comida rápida</div>
+        <div class="footer-option">Sushi</div>
+        <div class="footer-option">Postres</div>
+    </div>
+
+    <div class="footer-section">
+        <div class="footer-title">Únete a Rappi</div>
+        <div class="footer-option">Sé repartidor</div>
+        <div class="footer-option">Vende en Rappi</div>
+    </div>
+
+    <div class="footer-section">
+        <div class="footer-title">Sobre Rappi</div>
+        <div class="footer-option">Términos y condiciones</div>
+        <div class="footer-option">Política de privacidad</div>
+    </div>
+
+    <div class="social">
+        <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Facebook">
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" alt="Twitter">
+        <img src="https://cdn-icons-png.flaticon.com/512/1409/1409946.png" alt="Instagram">
+    </div>
+
+</footer>
+
+</div> <!-- cierre mobile-only -->
+
+</body>
+</html>
