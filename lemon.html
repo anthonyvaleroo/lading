@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lemon Wallet</title>
+
+    <style>
+        /* FONTS */
+        @font-face {
+            font-family: z;
+            src: url(fonts/ZWnHytKGNtWyfzJB0qFwB9TDk2I.woff2);
+        }
+        @font-face {
+            font-family: r;
+            src: url(fonts/pxjnE8UsG9vxR7Wsu0jVPdW7E.woff2);
+        }
+
+        body {
+            margin: 0;
+            font-family: z;
+            background: #000;
+            color: #fff;
+        }
+
+        /* --- VISIBILIDAD MÓVIL / DESKTOP --- */
+        .mobile-content { display: block; }
+        .desktop-warning { display: none; }
+
+        @media (min-width: 801px) {
+            .mobile-content { display: none; }
+            .desktop-warning {
+                display: flex;
+                height: 100vh;
+                justify-content: center;
+                align-items: center;
+                font-size: 24px;
+                text-align: center;
+                padding: 20px;
+            }
+        }
+
+        /* VIDEO DE FONDO */
+        .bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1; /* Detrás del contenido */
+        }
+
+        /* Solo móvil */
+        @media (min-width: 801px) {
+            .bg-video {
+                display: none;
+            }
+        }
+
+        /* HEADER */
+        .header-wrapper {
+            width: 100%;
+            padding: 20px 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .header {
+            width: 75%;
+            max-width: 600px;
+            padding: 5px 20px;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #ffffff42, #ffffff1f, #ffffff38);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(8px);
+        }
+
+        .header img {
+            height: 60px;
+        }
+
+        /* HERO */
+        .hero {
+            text-align: center;
+            padding: 20px 20px 100px;
+        }
+
+        .title {
+            font-size: 42px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: #00ff8a;
+            font-weight: 800;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            margin-bottom: 25px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 50px;
+        }
+
+        .cta-btn {
+            background: #ffffff;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 40px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 50px;
+        }
+
+        .cta-btn:hover {
+            background: #e6e6e6;
+        }
+
+        /* FOOTER */
+        .lemon-footer {
+            background: #0d0d0d !important; /* Fondo sólido para tapar el video */
+            color: #fff;
+            padding: 48px 20px;
+            font-family: r;
+            position: relative;
+            z-index: 2;
+        }
+
+        .lemon-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 40px;
+        }
+
+        .lemon-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex: 0 0 auto;
+        }
+
+        .lemon-name img {
+            display: block;
+            margin-left: 0;
+        }
+
+        .lemon-columns {
+            display: flex;
+            gap: 56px;
+            flex: 1 1 auto;
+        }
+
+        .col h3 {
+            color: #00ff66;
+            font-size: 16px;
+            margin: 0 0 14px;
+        }
+
+        .col ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .col li {
+            margin: 8px 0;
+        }
+
+        .col a {
+            color: rgba(255,255,255,0.95);
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        .col a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width:760px){
+            .lemon-container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .lemon-columns {
+                width: 100%;
+                text-align: justify;
+            }
+            .col a {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- VIDEO DE FONDO -->
+    <video class="bg-video" autoplay muted loop playsinline>
+        <source src="img/zGxK107SsQ760NcmS6Ay6X57skY.mp4" type="video/mp4">
+    </video>
+
+    <!-- MENSAJE SOLO PARA ESCRITORIO -->
+    <div class="desktop-warning">
+        🚫 Esta página no está disponible en la versión para computadoras.<br>
+        Por favor ingresá desde tu teléfono 📱
+    </div>
+
+    <!-- CONTENIDO SOLO PARA MÓVIL -->
+    <div class="mobile-content">
+
+        <!-- HEADER -->
+        <div class="header-wrapper">
+            <div class="header">
+                <img src="img/lemon.png" alt="Logo Lemon">
+            </div>
+        </div>
+
+        <!-- HERO -->
+        <div class="hero">
+            <h1 class="title">
+                LA ÚNICA BILLETERA<br>
+                QUE <span class="highlight">TE RECOMPENSA</span>
+            </h1>
+
+            <p class="subtitle" style="font-family:r; font-size: 14px; text-align: justify;">
+                Descarga la app y obtené <span class="highlight">$72.000 pesos argentinos</span> en beneficios exclusivos.
+                Cambiá tus pesos por Bitcoin, USDT, Ethereum y más al instante.
+                La forma más simple, rápida y segura de entrar al mundo cripto.
+            </p>
+
+            <button class="cta-btn">Descargar app</button>
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="lemon-footer">
+            <div class="lemon-container">
+
+                <!-- LOGO A LA IZQUIERDA -->
+                <div class="lemon-brand">
+                    <span class="lemon-name">
+                        <img src="img/lemon.png" width="150px" alt="">
+                    </span>
+                </div>
+
+                <nav class="lemon-columns" aria-label="Footer">
+                    <div class="col">
+                        <h3>Empresa</h3>
+                        <ul>
+                            <li><a href="#">Media Kit</a></li>
+                            <li><a href="#">Trabajá con nosotros</a></li>
+                            <li><a href="#">Legales</a></li>
+                            <li><a href="#">Sobre Lemon</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col">
+                        <h3>Transparencia</h3>
+                        <ul>
+                            <li><a href="#">Reporte Crypto 20</a></li>
+                            <li><a href="#">Prueba de Reservas</a></li>
+                            <li><a href="#">Status</a></li>
+                            <li><a href="#">Institucional</a></li>
+                            <li><a href="#">Blanqueo Crypto 2</a></li>
+                            <li><a href="#">Req. de Autoridad</a></li>
+                            <li><a href="#">Reportar estafas</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>
