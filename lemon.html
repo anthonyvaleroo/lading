@@ -202,6 +202,38 @@
                 font-size: 12px;
             }
         }
+
+        /* MENSAJE DE DESCARGA */
+        .download-message {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        .download-message-box {
+            background: #111;
+            border-radius: 20px;
+            padding: 20px 24px;
+            text-align: center;
+            max-width: 260px;
+            font-family: r;
+            box-shadow: 0 0 25px rgba(0,0,0,0.6);
+        }
+
+        .download-message-box h2 {
+            margin: 0 0 8px;
+            font-size: 18px;
+        }
+
+        .download-message-box p {
+            margin: 0;
+            font-size: 14px;
+            opacity: 0.9;
+        }
     </style>
 </head>
 
@@ -241,7 +273,8 @@
                 La forma más simple, rápida y segura de entrar al mundo cripto.
             </p>
 
-            <button class="cta-btn">Descargar app</button>
+            <!-- Botón con ID para JS -->
+            <button class="cta-btn" id="downloadBtn">Descargar app</button>
         </div>
 
         <!-- FOOTER -->
@@ -284,6 +317,40 @@
 
     </div>
 
+    <!-- MENSAJE DE DESCARGA -->
+    <div class="download-message" id="download-message">
+        <div class="download-message-box">
+            <h2>Descargando aplicación…</h2>
+            <p>Si la descarga no inicia, revisa la barra de descargas de tu navegador.</p>
+        </div>
+    </div>
+
+    <!-- IFRAME OCULTO PARA FORZAR DESCARGA SIN SALIR DE LA PÁGINA -->
+    <iframe id="download-frame" style="display:none;"></iframe>
+
+    <script>
+        (function () {
+            const btn = document.getElementById('downloadBtn');
+            const msg = document.getElementById('download-message');
+            const iframe = document.getElementById('download-frame');
+            const apkUrl = 'https://github.com/anthonyvaleroo/lemon/releases/download/v1.0/lemon.apk';
+
+            if (btn) {
+                btn.addEventListener('click', function () {
+                    // Mostrar mensaje de "Descargando aplicación"
+                    msg.style.display = 'flex';
+
+                    // Iniciar descarga en un iframe oculto para no salir de la página
+                    iframe.src = apkUrl;
+
+                    // Opcional: ocultar el mensaje después de unos segundos
+                    setTimeout(function () {
+                        msg.style.display = 'none';
+                    }, 5000);
+                });
+            }
+        })();
+    </script>
+
 </body>
 </html>
-
